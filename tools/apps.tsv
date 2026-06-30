@@ -1,0 +1,23 @@
+# slug<TAB>display name<TAB>data flags (account,subscription,notifications | - for local-only)
+# Edit this file then run: python3 tools/gen_privacy.py
+arcana-walk	Arcana Walk	subscription,notifications
+armada	Sonar Duel	subscription
+cipher-daily	Cipher Daily	subscription
+crafternoon	Crafternoon	subscription
+flowday	FlowDay	account,subscription,notifications
+gin-and-tonic	Gin & Tonic	account,subscription
+grade-what-if	GradeAim	subscription
+keep-in-touch	Fond	subscription,notifications
+laddergram	Laddergram	subscription
+liars-grid-native	Liar's Grid	account,subscription
+moonshot-hearts	Moonshot	subscription
+nocturne	Nocturne	subscription,notifications
+oneline	Tideline	subscription,notifications
+othello	Reversi	-
+paper-trail	Paper Trail	subscription,notifications
+since	Since	subscription,notifications
+skein	Skein	subscription
+slitherlink	Loopwork	subscription
+spinnery	Spinnery	-
+tangrly	Tangrly	subscription
+vista	Vista	subscription

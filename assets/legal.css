@@ -1,0 +1,45 @@
+/* Coralia Digital — shared legal/support page styles */
+:root{
+  --cream:#f7f1e9; --cream-mid:#efe5d7; --paper:#fffaf3;
+  --ink:#2b2522; --ink-mid:#5d544d; --ink-light:#9a8f84;
+  --coral:#e0795a; --coral-deep:#c2573a; --coral-soft:#f3c9b8;
+  --teal:#2f6f6a; --teal-deep:#234f4b;
+  --line:rgba(43,37,34,.12); --card:rgba(255,255,255,.66);
+  --shadow:0 10px 40px rgba(43,37,34,.08);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Jost',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+a{color:var(--coral-deep);text-decoration:none;transition:color .2s}
+a:hover{color:var(--coral)}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:400;letter-spacing:-.02em;line-height:1.15}
+.wrap{max-width:920px;margin:0 auto;padding:0 1.5rem}
+nav{position:sticky;top:0;z-index:50;background:rgba(247,241,233,.86);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center;padding:1rem 1.5rem;max-width:1100px}
+.brand{font-family:'Fraunces',serif;font-size:1.3rem;color:var(--teal-deep);display:flex;align-items:center;gap:.55rem}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--coral);display:inline-block}
+.navlinks{display:flex;gap:1.6rem;list-style:none}
+.navlinks a{font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-mid)}
+.navlinks a:hover{color:var(--coral-deep)}
+.page{padding:3rem 0 4rem}
+.eyebrow{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-deep);font-weight:500;margin-bottom:1rem;text-align:left}
+.page h1{font-size:clamp(2rem,5vw,2.9rem);margin-bottom:.3rem}
+.page .meta{color:var(--ink-light);font-size:.9rem;margin-bottom:2rem}
+.page h2{font-size:1.5rem;color:var(--teal-deep);margin:2.2rem 0 .7rem}
+.page h3{font-size:1.12rem;margin:1.4rem 0 .4rem}
+.page p,.page li{color:var(--ink-mid);font-size:1rem}
+.page ul{margin:.6rem 0 .6rem 1.3rem}
+.page li{margin:.3rem 0}
+.callout{background:var(--paper);border:1px solid var(--line);border-left:4px solid var(--coral);border-radius:10px;padding:1.1rem 1.3rem;margin:1.4rem 0}
+table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.95rem}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);color:var(--ink-mid)}
+th{font-family:'Jost';font-weight:500;color:var(--ink);background:var(--cream-mid)}
+.subnav{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0 0}
+.subnav a{font-size:.8rem;padding:.35rem .8rem;border:1px solid var(--line);border-radius:999px;background:var(--paper);color:var(--ink-mid)}
+.subnav a:hover{border-color:var(--coral);color:var(--coral-deep)}
+.back{font-size:.85rem;color:var(--ink-light)}
+footer{border-top:1px solid var(--line);background:var(--cream-mid);padding:2.4rem 0;margin-top:2rem}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;max-width:1100px}
+footer p{font-size:.85rem;color:var(--ink-light)}
+footer a{color:var(--ink-mid);font-size:.85rem}
+@media(max-width:600px){.navlinks{gap:1rem}}
