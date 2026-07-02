@@ -1,0 +1,46 @@
+{
+  "updated": "2026-07-02",
+  "note": "Cross-promo feed consumed by MoreGamesView in every Coralia app. Only entries with a non-empty appStoreId are displayed — fill IDs in as apps go live (the ID is the number in the App Store URL, e.g. id6764054679). Icons: put a 512px PNG at more-games/icons/<slug>.png.",
+  "apps": [
+    {
+      "slug": "spindrift",
+      "name": "Spindrift",
+      "tagline": "Your knitting & crochet companion",
+      "bundleId": "com.spindrift.app",
+      "appStoreId": "6764054679",
+      "icon": "https://katinkia.github.io/more-games/icons/spindrift.png"
+    },
+    {
+      "slug": "sudokudaily",
+      "name": "SudokuStreak",
+      "tagline": "Daily sudoku with streaks & friends",
+      "bundleId": "coraliadigital.SudokuDaily",
+      "appStoreId": "",
+      "icon": "https://katinkia.github.io/more-games/icons/sudokudaily.png"
+    },
+    {
+      "slug": "oddword",
+      "name": "Oddword",
+      "tagline": "Spot the imposter word",
+      "bundleId": "com.playimposter.app",
+      "appStoreId": "",
+      "icon": "https://katinkia.github.io/more-games/icons/oddword.png"
+    },
+    {
+      "slug": "liars-grid-native",
+      "name": "Liars Grid: Daily Puzzle",
+      "tagline": "Knights, knaves & one daily grid",
+      "bundleId": "com.spindrift.liarsgrid",
+      "appStoreId": "",
+      "icon": "https://katinkia.github.io/more-games/icons/liars-grid-native.png"
+    },
+    {
+      "slug": "big-day",
+      "name": "Big Day: Countdown",
+      "tagline": "Count down to what matters",
+      "bundleId": "com.coralia.bigday",
+      "appStoreId": "",
+      "icon": "https://katinkia.github.io/more-games/icons/big-day.png"
+    }
+  ]
+}
