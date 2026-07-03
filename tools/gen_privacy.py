@@ -16,7 +16,8 @@ Usage:
                                                  # append a new app then regenerate
 
 Data flags (comma-separated, any of):
-    account        app signs users in / stores data on a server (Supabase, Sign in with Apple)
+    account        app signs users in / stores data on a server (Supabase)
+    applesignin    account app uses Sign in with Apple (omit for email/password apps)
     subscription   app sells a subscription or IAP (RevenueCat / StoreKit)
     notifications  app schedules local notifications / reminders
 A local-only app with no purchases uses an empty flag set (write "-" or "local").
@@ -42,7 +43,10 @@ def flag(flags, name):
 def data_sections(app, flags):
     out = []
     if flag(flags, "account"):
-        out.append("<h3>Account data</h3><p>When you create an account or sign in with Apple, we receive your identifier and, if you share them, your name and email. We use this only to create and identify your account and sync your data across devices &mdash; never for marketing. Apple may relay or hide your real email; we work with whatever Apple provides.</p>")
+        if flag(flags, "applesignin"):
+            out.append("<h3>Account data</h3><p>When you create an account or sign in with Apple, we receive your identifier and, if you share them, your name and email. We use this only to create and identify your account and sync your data across devices &mdash; never for marketing. Apple may relay or hide your real email; we work with whatever Apple provides.</p>")
+        else:
+            out.append("<h3>Account data</h3><p>When you create an account you provide an email address and a password. We use your email address only to create and identify your account and to sign you in &mdash; never for marketing. Your password is stored securely by our authentication provider and we never see it in readable form.</p>")
         out.append("<h3>Your in-app content &amp; progress</h3><p>The data you create in %s (your entries, settings, results and progress) is stored on our servers, linked to your account, so it stays in sync across your devices.</p>" % app)
     else:
         out.append("<h3>On-device data only</h3><p>%s stores your content, settings and progress locally on your device using the operating system's standard storage. We do not have an account system and this data is never sent to us or to any server we control.</p>" % app)
@@ -56,7 +60,10 @@ def data_sections(app, flags):
 def thirdparty_rows(flags):
     rows = []
     if flag(flags, "account"):
-        rows.append(("Apple (Sign in with Apple, StoreKit)", "Authentication &amp; payments", "apple.com/legal/privacy"))
+        if flag(flags, "applesignin"):
+            rows.append(("Apple (Sign in with Apple, StoreKit)", "Authentication &amp; payments", "apple.com/legal/privacy"))
+        elif flag(flags, "subscription"):
+            rows.append(("Apple (StoreKit)", "Payments", "apple.com/legal/privacy"))
         rows.append(("Supabase", "Account &amp; content storage", "supabase.com/privacy"))
     elif flag(flags, "subscription"):
         rows.append(("Apple (StoreKit)", "Payments", "apple.com/legal/privacy"))

@@ -4,8 +4,8 @@ arcana-walk	Arcana Walk	subscription,notifications
 armada	Sonar Duel	subscription
 cipher-daily	Cipher Daily	subscription
 crafternoon	Crafternoon	subscription
-flowday	FlowDay	account,subscription,notifications
-gin-and-tonic	Gin & Tonic	account,subscription
+flowday	FlowDay	account,subscription,notifications,applesignin
+gin-and-tonic	Gin & Tonic	account,subscription,applesignin
 grade-what-if	GradeAim	subscription
 keep-in-touch	Fond	subscription,notifications
 laddergram	Laddergram	subscription
@@ -22,5 +22,4 @@ spinnery	Spinnery	-
 tangrly	Tangrly	subscription
 vista	Vista	subscription
 big-day	Big Day	subscription,notifications
-oddword	Oddword	account,subscription
-oddword	Oddword	account,subscription,notifications
+oddword	Oddword	account,subscription,notifications,applesignin
