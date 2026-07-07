@@ -20,6 +20,7 @@ Data flags (comma-separated, any of):
     applesignin    account app uses Sign in with Apple (omit for email/password apps)
     subscription   app sells a subscription or IAP (RevenueCat / StoreKit)
     notifications  app schedules local notifications / reminders
+    ads            free tier shows Google AdMob ads (non-personalized; IAP removes them)
 A local-only app with no purchases uses an empty flag set (write "-" or "local").
 """
 import sys, os, csv, datetime, html as _html
@@ -54,6 +55,8 @@ def data_sections(app, flags):
         out.append("<h3>Subscription data</h3><p>If you buy a subscription or in-app purchase, Apple and RevenueCat process the transaction and tell us whether your purchase is active. We never receive your card details.</p>")
     if flag(flags, "notifications"):
         out.append("<h3>Notifications</h3><p>If you enable reminders, the notifications are scheduled locally on your device. We do not run a push server and do not collect a device push token for this.</p>")
+    if flag(flags, "ads"):
+        out.append("<h3>Advertising</h3><p>The free version of %s shows occasional ads served by Google AdMob. To serve and measure ads, Google's SDK may collect device information such as device identifiers, IP address, coarse ad-interaction data and crash/diagnostic data. We request <strong>non-personalized ads</strong> and do not pass Google any information about you or your play. Purchasing the one-time upgrade removes all ads, and the ads SDK is not started at all for upgraded users. See <a href=\"https://policies.google.com/technologies/ads\">Google&rsquo;s advertising policy</a> for details.</p>" % app)
     return "".join(out)
 
 
@@ -69,6 +72,8 @@ def thirdparty_rows(flags):
         rows.append(("Apple (StoreKit)", "Payments", "apple.com/legal/privacy"))
     if flag(flags, "subscription"):
         rows.append(("RevenueCat", "Subscription management", "revenuecat.com/privacy"))
+    if flag(flags, "ads"):
+        rows.append(("Google AdMob", "Advertising (free tier only)", "policies.google.com/privacy"))
     return rows
 
 
@@ -96,6 +101,20 @@ def page(slug, app, flags):
                  "sign-in, and your data never leaves your device through us.</p></div>" % app)
         choices = ("<p>Because your data lives on your device, deleting the app removes it. You can also "
                    "email <a href=\"mailto:%s\">%s</a> with any privacy question.</p>" % (CONTACT, CONTACT))
+
+    if flag(flags, "ads"):
+        notcollect = ("<ul><li>Location data</li><li>Contacts</li><li>Microphone audio</li>"
+                      "<li>Health or fitness data</li><li>Browsing history</li></ul>"
+                      "<p>We do not sell your data to anyone. The free version shows non-personalized "
+                      "ads from Google AdMob (see &ldquo;Advertising&rdquo; above); the one-time upgrade "
+                      "removes ads entirely.</p>")
+    else:
+        notcollect = ("<ul><li>Location data</li><li>Contacts</li><li>Microphone audio</li>"
+                      "<li>Health or fitness data</li><li>Browsing history</li>"
+                      "<li>Advertising identifiers (IDFA)</li>"
+                      "<li>Any data used for advertising or cross-app tracking</li></ul>"
+                      "<p>We do not sell your data to anyone, and we do not use it for advertising "
+                      "or cross-app tracking.</p>")
 
     return """<!DOCTYPE html>
 <html lang="en">
@@ -125,8 +144,7 @@ def page(slug, app, flags):
   <h2>What data we handle and why</h2>
   {sections}
   <h2>What we do <em>not</em> collect</h2>
-  <ul><li>Location data</li><li>Contacts</li><li>Microphone audio</li><li>Health or fitness data</li><li>Browsing history</li><li>Advertising identifiers (IDFA)</li><li>Any data used for advertising or cross-app tracking</li></ul>
-  <p>We do not sell your data to anyone, and we do not use it for advertising or cross-app tracking.</p>
+  {notcollect}
   {thirdparty}
   <h2>Children</h2>
   <p>{app} is not directed at children under 13 and we do not knowingly collect personal information from them.</p>
@@ -144,7 +162,8 @@ def page(slug, app, flags):
 </html>
 """.format(app=app, studio=STUDIO, fonts=FONTS, css=CSS, contact=CONTACT,
            effective=EFFECTIVE, intro=intro, sections=data_sections(app, flags),
-           thirdparty=tp, choices=choices, year=datetime.date.today().year)
+           notcollect=notcollect, thirdparty=tp, choices=choices,
+           year=datetime.date.today().year)
 
 
 def load_registry():
