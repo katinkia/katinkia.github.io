@@ -3,7 +3,6 @@
 arcana-walk	Arcana Walk	subscription,notifications
 armada	Sonar Duel	subscription
 cipher-daily	Cipher Daily	subscription
-crafternoon	Crafternoon	subscription
 flowday	FlowDay	account,subscription,notifications,applesignin
 gin-and-tonic	Gin & Tonic	account,subscription,applesignin,ads
 grade-what-if	GradeAim	subscription
@@ -30,3 +29,4 @@ stitchwork	Stitchwork	-
 same-moon	Same Moon	account,subscription,notifications,applesignin
 reversi	Reversi	subscription
 culprit	Culprit	subscription
+crafternoon	Crafternoon	subscription,ads
